@@ -1,0 +1,43 @@
+{
+    "name": "kuriousagency/craft-api",
+    "description": "An api for craft.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "craft api"
+    ],
+    "support": {
+        "docs": "https://github.com/KuriousAgency/craft-api/craft-api/blob/master/README.md",
+        "issues": "https://github.com/KuriousAgency/craft-api/craft-api/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kurious Agency",
+            "homepage": "https://kurious.agency"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "kuriousagency\\craftapi\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Craft API",
+        "handle": "craft-api",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/KuriousAgency/craft-api/craft-api/master/CHANGELOG.md",
+        "components": {
+            "craftApiService": "kuriousagency\\craftapi\\services\\CraftApiService"
+        },
+        "class": "kuriousagency\\craftapi\\CraftApi"
+    }
+}

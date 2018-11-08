@@ -1,0 +1,26 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Craft API plugin for Craft CMS 3.x
+ *
+ * Craft API Settings.twig
+ *
+ * @author    Kurious Agency
+ * @copyright Copyright (c) 2018 Kurious Agency
+ * @link      https://kurious.agency
+ * @package   CraftApi
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("kuriousagency\\craftapi\\assetbundles\\craftapi\\CraftApiAsset") %}
+
+{{ forms.textField({
+    label: 'API Token',
+    instructions: 'Enter a token to pass to the api as an authentication bearer token',
+    id: 'apiToken',
+    name: 'apiToken',
+    value: settings['apiToken']})
+}}
