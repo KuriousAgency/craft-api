@@ -53,11 +53,22 @@ class ApiController extends Controller
 		$response = Craft::$app->getResponse();
 		$segments = explode('/', $url);
 
+		$view = Craft::$app->getView();
+        $oldTemplateMode = $view->getTemplateMode();
+		$view->setTemplateMode($view::TEMPLATE_MODE_SITE);
+
 		//check if last segment is format
 		$lastSeg = $segments[count($segments)-1];
 		if (StringHelper::contains($lastSeg, '.')) {
 			$type = explode('.',$lastSeg)[1];
 			$lastSeg = $segments[count($segments)-1] = explode('.',$lastSeg)[0];
+
+			//check if file exists with that extension
+			if ($view->doesTemplateExist('_api/'.$url)) {
+				return $this->renderTemplate('_api/'.$url);
+			}
+
+
 			switch ($type)
 			{
 				case 'json':
@@ -84,9 +95,9 @@ class ApiController extends Controller
 
 		
 
-		$view = Craft::$app->getView();
+		/*$view = Craft::$app->getView();
         $oldTemplateMode = $view->getTemplateMode();
-		$view->setTemplateMode($view::TEMPLATE_MODE_SITE);
+		$view->setTemplateMode($view::TEMPLATE_MODE_SITE);*/
 
 		$templatePath = "_api/".implode('/',$segments);
 
